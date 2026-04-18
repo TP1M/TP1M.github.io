@@ -654,7 +654,7 @@
                         <i class="fab fa-facebook-messenger"></i>
                     </a>
                     
-                    <button id="darkModeToggle" class="telegram-link w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-white transition-all" aria-label="Toggle dark mode">
+                    <button id="darkModeToggle" class="w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-white transition-all" aria-label="Toggle dark mode">
                         <span class="material-symbols-outlined">sunny</span>
                     </button>
                 </div>
@@ -1702,8 +1702,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 var appUri = appUriBuilder(href);
                 var fallbackTimer = setTimeout(function() {
                     window.location.href = href;
-                }, 1000);
-                window.location.href = appUri;
+                }, 2000);
+                // Try to open app, catch security errors (some browsers block custom schemes)
+                try {
+                    window.location.href = appUri;
+                } catch (err) {
+                    console.warn('App scheme error:', err);
+                    clearTimeout(fallbackTimer);
+                    window.location.href = href;
+                }
                 window.addEventListener('pagehide', function() {
                     clearTimeout(fallbackTimer);
                 });
@@ -1722,6 +1729,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Messenger links
     setupAppLinks('a.messenger-link', function(href) {
+        // fb-messenger://share opens share dialog with link
+        // The link contains text parameter which Messenger may use
         return 'fb-messenger://share?link=' + encodeURIComponent(href);
     });
 });
