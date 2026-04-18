@@ -52,14 +52,7 @@
     
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-    
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" >
     
     
     <style>
@@ -212,12 +205,6 @@
 
         .icon-3d:hover {
             transform: rotateY(180deg) scale(1.1);
-        }
-        /* Material Symbols icons */
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            font-size: inherit;
-            vertical-align: middle;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -573,6 +560,43 @@
             scroll-margin-top: 80px;
         }
 
+
+        /* Self-hosted Google Fonts - subsetted to required weights */
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: url('/fonts/inter-regular.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-display: swap;
+          src: url('/fonts/inter-500.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 600;
+          font-display: swap;
+          src: url('/fonts/inter-600.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 700;
+          font-display: swap;
+          src: url('/fonts/inter-700.woff2') format('woff2');
+        }
+        @font-face {
+          font-family: 'Space Grotesk';
+          font-style: normal;
+          font-weight: 700;
+          font-display: swap;
+          src: url('/fonts/space-grotesk-700.woff2') format('woff2');
+        }
     </style>
     
     
@@ -644,15 +668,15 @@
                     <a href="https://wa.me/995598428842?text=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%21%20%E1%83%9B%E1%83%A1%E1%83%A3%E1%83%A0%E1%83%A1%20%E1%83%97%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A1%E1%83%94%E1%83%A0%E1%83%95%E1%83%98%E1%83%A1%E1%83%98%E1%83%97%20%E1%83%A1%E1%83%90%E1%83%A0%E1%83%92%E1%83%94%E1%83%91%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%2C%20%E1%83%9B%E1%83%90%E1%83%A5%E1%83%95%E1%83%A1%20%E1%83%A0%E1%83%90%E1%83%9B%E1%83%9D%E1%83%93%E1%83%94%E1%83%9C%E1%83%98%E1%83%9B%E1%83%94%20%E1%83%A8%E1%83%94%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90" class="w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-green-500 hover:text-white transition-all" aria-label="WhatsApp" target="_blank" rel="noopener">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a href="https://t.me/+995598428842?text=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%21%20%E1%83%9B%E1%83%A1%E1%83%A3%E1%83%A0%E1%83%A1%20%E1%83%97%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A1%E1%83%94%E1%83%A0%E1%83%95%E1%83%98%E1%83%A1%E1%83%98%E1%83%97%20%E1%83%A1%E1%83%90%E1%83%A0%E1%83%92%E1%83%94%E1%83%91%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%2C%20%E1%83%9B%E1%83%90%E1%83%A5%E1%83%95%E1%83%A1%20%E1%83%A0%E1%83%90%E1%83%9B%E1%83%9D%E1%83%93%E1%83%94%E1%83%9C%E1%83%98%E1%83%9B%E1%83%94%20%E1%83%A8%E1%83%94%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90" class="telegram-link w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-400 hover:text-white transition-all" aria-label="Telegram" target="_blank" rel="noopener">
+                    <a href="https://t.me/+995598428842?text=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%21%20%E1%83%9B%E1%83%A1%E1%83%A3%E1%83%A0%E1%83%A1%20%E1%83%97%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A1%E1%83%94%E1%83%A0%E1%83%95%E1%83%98%E1%83%A1%E1%83%98%E1%83%97%20%E1%83%A1%E1%83%90%E1%83%A0%E1%83%92%E1%83%94%E1%83%91%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%2C%20%E1%83%9B%E1%83%90%E1%83%A5%E1%83%95%E1%83%A1%20%E1%83%A0%E1%83%90%E1%83%9B%E1%83%9D%E1%83%93%E1%83%94%E1%83%9C%E1%83%98%E1%83%9B%E1%83%94%20%E1%83%A8%E1%83%94%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90" class="w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-400 hover:text-white transition-all" aria-label="Telegram" target="_blank" rel="noopener">
                         <i class="fab fa-telegram"></i>
                     </a>
                     <a href="https://m.me/username?text=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%21%20%E1%83%9B%E1%83%A1%E1%83%A3%E1%83%A0%E1%83%A1%20%E1%83%97%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A1%E1%83%94%E1%83%A0%E1%83%95%E1%83%98%E1%83%A1%E1%83%98%E1%83%97%20%E1%83%A1%E1%83%90%E1%83%A0%E1%83%92%E1%83%94%E1%83%91%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%2C%20%E1%83%9B%E1%83%90%E1%83%A5%E1%83%95%E1%83%A1%20%E1%83%A0%E1%83%90%E1%83%9B%E1%83%9D%E1%83%93%E1%83%94%E1%83%9C%E1%83%98%E1%83%9B%E1%83%94%20%E1%83%A8%E1%83%94%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90" class="messenger-link w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-blue-500 hover:text-white transition-all" aria-label="Messenger" target="_blank" rel="noopener">
                         <i class="fab fa-facebook-messenger"></i>
                     </a>
                     
-                    <button id="darkModeToggle" class="telegram-link w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-white transition-all" aria-label="Toggle dark mode">
-                        <span class="material-symbols-outlined">sunny</span>
+                    <button id="darkModeToggle" class="w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-white transition-all" aria-label="Toggle dark mode">
+                        <i class="fas fa-sun" id="darkModeIcon"></i>
                     </button>
                 </div>
             </div>
@@ -1329,14 +1353,17 @@
             // Set initial icon based on current theme
             const updateDarkModeIcon = () => {
                 const isDark = document.documentElement.classList.contains('dark');
-                const icon = darkModeToggle.querySelector('span.material-symbols-outlined');
+                const icon = document.getElementById('darkModeIcon');
                 if (icon) {
                     if (isDark) {
-                        icon.innerText = 'dark_mode';
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
                     } else {
-                        icon.innerText = 'sunny';
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
                     }
                 }
+            }
             };
 
             // Update icon initially
@@ -1515,13 +1542,16 @@
     if (darkModeToggle) {
         // Set initial icon based on current theme
         var updateDarkModeIcon = function() {
-            var isDark = document.documentElement.classList.contains('dark');
-            var icon = darkModeToggle.querySelector('span.material-symbols-outlined');
-            if (icon) {
-                if (isDark) {
-                    icon.innerText = 'dark_mode';
-                } else {
-                    icon.innerText = 'sunny';
+                var isDark = document.documentElement.classList.contains('dark');
+                var icon = document.getElementById('darkModeIcon');
+                if (icon) {
+                    if (isDark) {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    } else {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    }
                 }
             }
         };
