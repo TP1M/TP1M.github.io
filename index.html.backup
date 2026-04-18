@@ -48,18 +48,18 @@
     </script>
     
     
-    <link rel="stylesheet" href="/css/tailwind.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     
     <style>
@@ -573,47 +573,35 @@
             scroll-margin-top: 80px;
         }
 
-
-        /* Custom Tailwind classes from config */
-        .font-inter { font-family: 'Inter', sans-serif; }
-        .font-grotesk { font-family: 'Space Grotesk', sans-serif; }
-        
-        .text-primary { color: #6366f1; }
-        .bg-primary { background-color: #6366f1; }
-        .border-primary { border-color: #6366f1; }
-        
-        .text-primary-light { color: #818cf8; }
-        .bg-primary-light { background-color: #818cf8; }
-        
-        .text-primary-dark { color: #4f46e5; }
-        .bg-primary-dark { background-color: #4f46e5; }
-        
-        /* Custom animations */
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
+    </style>
+    
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'grotesk': ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        'primary-light': '#818cf8',
+                        'primary-dark': '#4f46e5',
+                    },
+                    animation: {
+                        'float-slow': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+                    }
+                }
+            }
         }
-        @keyframes shimmer {
-          0% { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        @keyframes pulse-glow {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
-        }
-        .animate-float-slow { animation: float 6s ease-in-out infinite; }
-        .animate-shimmer { 
-          animation: shimmer 3s linear infinite;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-          background-size: 200% auto;
-        }
-        .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-            </style>
+    </script>
     
     
-    
-    
-    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default,es5,es6,es7,fetch,Promise,Object.fromEntries"></script>
 </head>
 <body class="font-inter bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
 
@@ -666,7 +654,7 @@
                         <i class="fab fa-facebook-messenger"></i>
                     </a>
                     
-                    <button id="darkModeToggle" class="w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-white transition-all" aria-label="Toggle dark mode">
+                    <button id="darkModeToggle" class="telegram-link w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-white transition-all" aria-label="Toggle dark mode">
                         <span class="material-symbols-outlined">sunny</span>
                     </button>
                 </div>
@@ -738,7 +726,7 @@
                 
                 
                 <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                    პერსონალურ ასისტენტთა გუნდი, "დამკვეთი-შემსრულებელი" მუშაობის პრინციპით — სწრაფი, მარტივი, მორგებული.​​​​​​​​​​​​​​​<br><br><span class="gradient-text font-bold">თქვენი მოთხოვნა, ჩვენი გადაწყვეტილებები</span>
+                    პერსონალური ასისტენტთა გუნდი, "დამკვეთი-შემსრულებელი" მუშაობის პრინციპით — სწრაფი, მარტივი, მორგებული.​​​​​​​​​​​​​​​<br><br><span class="gradient-text font-bold">თქვენი მოთხოვნა, ჩვენი გადაწყვეტილებები</span>
                 </p>
             </div>
         </div>
@@ -1714,23 +1702,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 var appUri = appUriBuilder(href);
                 var fallbackTimer = setTimeout(function() {
                     window.location.href = href;
-                }, 2000);
-                // Clear timer if app opens successfully
-                var clearFallback = function() {
+                }, 1000);
+                window.location.href = appUri;
+                window.addEventListener('pagehide', function() {
                     clearTimeout(fallbackTimer);
-                    window.removeEventListener('pagehide', clearFallback);
-                    window.removeEventListener('blur', clearFallback);
-                };
-                window.addEventListener('pagehide', clearFallback);
-                window.addEventListener('blur', clearFallback);
-                // Try to open app, catch security errors (some browsers block custom schemes)
-                try {
-                    window.location.href = appUri;
-                } catch (err) {
-                    console.warn('App scheme error:', err);
-                    clearFallback();
-                    window.location.href = href;
-                }
+                });
             });
         });
     }
@@ -1741,16 +1717,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var text = '';
         var match = href.match(/text=([^&]+)/);
         if (match) text = decodeURIComponent(match[1]);
-        // tg://msg works for phone numbers
         return 'tg://msg?to=' + encodeURIComponent(phone) + '&text=' + encodeURIComponent(text);
     });
     
     // Messenger links
     setupAppLinks('a.messenger-link', function(href) {
-        // fb-messenger://share opens share dialog with link
-        // Note: This may not prefill text. For better experience, use Facebook Page ID:
-        // fb-messenger-public://user-thread/<page-id>?text=...
-        // Replace 'username' with actual Facebook Page username in href
         return 'fb-messenger://share?link=' + encodeURIComponent(href);
     });
 });
