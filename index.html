@@ -1703,17 +1703,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 var fallbackTimer = setTimeout(function() {
                     window.location.href = href;
                 }, 2000);
+                // Clear timer if app opens successfully
+                var clearFallback = function() {
+                    clearTimeout(fallbackTimer);
+                    window.removeEventListener('pagehide', clearFallback);
+                    window.removeEventListener('blur', clearFallback);
+                };
+                window.addEventListener('pagehide', clearFallback);
+                window.addEventListener('blur', clearFallback);
                 // Try to open app, catch security errors (some browsers block custom schemes)
                 try {
                     window.location.href = appUri;
                 } catch (err) {
                     console.warn('App scheme error:', err);
-                    clearTimeout(fallbackTimer);
+                    clearFallback();
                     window.location.href = href;
                 }
-                window.addEventListener('pagehide', function() {
-                    clearTimeout(fallbackTimer);
-                });
             });
         });
     }
@@ -1724,13 +1729,16 @@ document.addEventListener('DOMContentLoaded', function() {
         var text = '';
         var match = href.match(/text=([^&]+)/);
         if (match) text = decodeURIComponent(match[1]);
+        // tg://msg works for phone numbers
         return 'tg://msg?to=' + encodeURIComponent(phone) + '&text=' + encodeURIComponent(text);
     });
     
     // Messenger links
     setupAppLinks('a.messenger-link', function(href) {
         // fb-messenger://share opens share dialog with link
-        // The link contains text parameter which Messenger may use
+        // Note: This may not prefill text. For better experience, use Facebook Page ID:
+        // fb-messenger-public://user-thread/<page-id>?text=...
+        // Replace 'username' with actual Facebook Page username in href
         return 'fb-messenger://share?link=' + encodeURIComponent(href);
     });
 });
