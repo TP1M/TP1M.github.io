@@ -483,8 +483,8 @@
                 font-size: 2rem;
             }
             /* Move hero section 10px lower on tablet */
-            section.relative {
-                padding-top: calc(var(--header-height) + 10px);
+            nav + section.relative {
+                padding-top: calc(var(--header-height) + 10px) !important;
             }
         }
 
@@ -546,9 +546,9 @@
             }
             
             /* Move hero section 10px lower on mobile */
-            section.relative {
+            nav + section.relative {
                 padding-bottom: 10px;
-                padding-top: calc(var(--header-height) + 10px);
+                padding-top: calc(var(--header-height) + 10px) !important;
             }
             
 
@@ -1481,10 +1481,6 @@
                 callback.call(thisArg, this[i], i, this);
             }
         };
-
-            section.relative {
-                padding-top: calc(var(--header-height) + 10px);
-            }
     }
     
     // Polyfill Object.fromEntries if missing
