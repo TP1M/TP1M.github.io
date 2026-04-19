@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
+
+    <!-- Preconnect to CDNs for faster resource loading -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,11 +53,12 @@
     </script>
     
     
-    <script src="https://cdn.tailwindcss.com"></script>
     
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Preload Tailwind CSS for critical rendering -->
+    <link rel="preload" href="/css/tailwind.min.css" as="style" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/tailwind.min.css" crossorigin="anonymous" onload="window.cssLoaded = true">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     
     
 
@@ -94,6 +100,11 @@
             src: url('/fonts/space-grotesk-700.woff2') format('woff2');
         }
     </style>
+
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     
     
     <style>
@@ -668,7 +679,6 @@
     </script>
     
     
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default,es5,es6,es7,fetch,Promise,Object.fromEntries"></script>
 </head>
 <body class="font-inter bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
     <!-- Preloader -->
@@ -1829,11 +1839,69 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+        
     <script>
-        // Hide preloader when page is fully loaded
-        window.addEventListener('load', function() {
+        // Optimized preloader: hide when CSS and fonts are ready
+        (function() {
             const preloader = document.getElementById('preloader');
-            if (preloader) {
+            if (!preloader) return;
+            
+            let cssReady = false;
+            let fontsReady = false;
+            
+            // Check CSS loading
+            function checkCSS() {
+                if (window.cssLoaded) {
+                    cssReady = true;
+                    tryHide();
+                    return;
+                }
+                // Find the stylesheet link and listen for load
+                const cssLink = document.querySelector('link[href="/css/tailwind.min.css"]');
+                if (cssLink) {
+                    cssLink.addEventListener('load', function() {
+                        cssReady = true;
+                        tryHide();
+                    });
+                    cssLink.addEventListener('error', function() {
+                        // If CSS fails, still hide preloader after short delay
+                        setTimeout(function() {
+                            cssReady = true;
+                            tryHide();
+                        }, 300);
+                    });
+                } else {
+                    // No link found, assume CSS is ready
+                    cssReady = true;
+                    tryHide();
+                }
+            }
+            
+            // Check fonts loading
+            function checkFonts() {
+                if ('fonts' in document) {
+                    Promise.all([
+                        document.fonts.load('1em Inter'),
+                        document.fonts.load('700 1em "Space Grotesk"')
+                    ]).then(function() {
+                        fontsReady = true;
+                        tryHide();
+                    }).catch(function() {
+                        fontsReady = true; // fallback
+                        tryHide();
+                    });
+                } else {
+                    // No Font Loading API, assume fonts are ready after a short delay
+                    setTimeout(function() {
+                        fontsReady = true;
+                        tryHide();
+                    }, 300);
+                }
+            }
+            
+            function tryHide() {
+                if (!cssReady || !fontsReady) return;
+                
                 // Add hidden class to trigger fade-out
                 preloader.classList.add('preloader-hidden');
                 // Remove from DOM after animation completes
@@ -1841,19 +1909,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     preloader.style.display = 'none';
                 }, 500);
             }
-        });
-        
-        // Fallback: hide preloader after max 3 seconds (in case load event fails)
-        setTimeout(function() {
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('preloader-hidden')) {
-                preloader.classList.add('preloader-hidden');
-                setTimeout(function() {
-                    preloader.style.display = 'none';
-                }, 500);
-            }
-        }, 3000);
+            
+            // Start checking
+            checkCSS();
+            checkFonts();
+            
+            // Safety fallback: hide after max 2 seconds
+            setTimeout(function() {
+                if (!preloader.classList.contains('preloader-hidden')) {
+                    preloader.classList.add('preloader-hidden');
+                    setTimeout(function() {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }, 2000);
+        })();
     </script>
+
 
 </body>
 </html>
