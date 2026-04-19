@@ -1,0 +1,31 @@
+# Cache control headers for GitHub Pages
+# https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#about-caching-and-cdn
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.eot
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS and JS assets
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML - shorter cache
+/*
+  Cache-Control: public, max-age=600, stale-while-revalidate=300
