@@ -894,6 +894,47 @@
         .theme-new-design-1.dark button.bg-gradient-to-r.from-primary.to-purple-600 {
             background: var(--color-accent) !important;
         }
+        
+        /* ===== ROBUST FIXES ===== */
+        /* Ensure step circles have solid colors and no gradients */
+        html.theme-new-design-1 #how .rounded-2xl.bg-blue-900,
+        html.theme-new-design-1 #how .rounded-2xl.bg-sky-500,
+        html.theme-new-design-1 #how .rounded-2xl.bg-purple-500,
+        html.theme-new-design-1.dark #how .rounded-2xl.dark\\:bg-sky-500,
+        html.theme-new-design-1.dark #how .rounded-2xl.dark\\:bg-emerald-500,
+        html.theme-new-design-1.dark #how .rounded-2xl.dark\\:bg-purple-500 {
+            background-image: none !important;
+            border: 1px solid rgba(30, 58, 138, 0.2) !important;
+        }
+        html.theme-new-design-1.dark #how .rounded-2xl {
+            border-color: rgba(14, 165, 233, 0.3) !important;
+        }
+        
+        /* Completely disable service card interactions */
+        html.theme-new-design-1 .service-card,
+        html.theme-new-design-1 .service-card *,
+        html.theme-new-design-1 .service-card::before,
+        html.theme-new-design-1 .service-card::after {
+            transition: none !important;
+            transform: none !important;
+            animation: none !important;
+        }
+        html.theme-new-design-1 .service-card:hover,
+        html.theme-new-design-1 .service-card.card-hover:hover,
+        html.theme-new-design-1 .service-card:hover * {
+            transform: none !important;
+        }
+        
+        /* Strong static section fixes for mobile collapse */
+        html.theme-new-design-1 .static-section,
+        html.theme-new-design-1 .static-section *,
+        html.theme-new-design-1 .static-section *::before,
+        html.theme-new-design-1 .static-section *::after {
+            transform: none !important;
+            transform-origin: center !important;
+            animation: none !important;
+            transition: none !important;
+        }
 
     </style>
     
