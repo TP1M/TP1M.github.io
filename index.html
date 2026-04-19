@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
-
-    <!-- Preconnect to CDNs for faster resource loading -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +46,12 @@
             history.scrollRestoration = 'manual';
         }
     </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     
     
@@ -94,11 +94,6 @@
             src: url('/fonts/space-grotesk-700.woff2') format('woff2');
         }
     </style>
-
-
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     
     
     <style>
@@ -678,9 +673,6 @@
     <!-- Preloader -->
     <div id="preloader">
         <div class="preloader-line"></div>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
     </div>
 
 
@@ -1836,94 +1828,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-        
     <script>
-        // Preloader for Tailwind CDN and fonts
-        (function() {
+        // Hide preloader when page is fully loaded
+        window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
-            if (!preloader) return;
-            
-            let cssReady = false;
-            let fontsReady = false;
-            
-            // Check Tailwind CSS loading
-            function checkCSS() {
-                // Tailwind CDN injects a style tag with id '__tailwind'
-                // Wait for it to appear and have CSS rules
-                function checkTailwindStyle() {
-                    const styleTag = document.getElementById('__tailwind');
-                    if (styleTag && styleTag.sheet && styleTag.sheet.cssRules.length > 0) {
-                        cssReady = true;
-                        tryHide();
-                        return true;
-                    }
-                    return false;
-                }
-                
-                // If already present
-                if (checkTailwindStyle()) return;
-                
-                // Poll for style tag
-                let attempts = 0;
-                const interval = setInterval(function() {
-                    if (checkTailwindStyle()) {
-                        clearInterval(interval);
-                        return;
-                    }
-                    attempts++;
-                    if (attempts > 30) { // 3 seconds max (100ms * 30)
-                        clearInterval(interval);
-                        // Assume CSS is ready anyway
-                        cssReady = true;
-                        tryHide();
-                    }
-                }, 100);
-                
-                // Also listen for load event on the script tag (if we can find it)
-                const tailwindScript = document.querySelector('script[src="https://cdn.tailwindcss.com"]');
-                if (tailwindScript) {
-                    tailwindScript.addEventListener('load', function() {
-                        // Give a moment for styles to inject
-                        setTimeout(function() {
-                            cssReady = true;
-                            tryHide();
-                        }, 50);
-                    });
-                    tailwindScript.addEventListener('error', function() {
-                        // If script fails, still hide after short delay
-                        setTimeout(function() {
-                            cssReady = true;
-                            tryHide();
-                        }, 300);
-                    });
-                }
-            }
-            
-            // Check fonts loading
-            function checkFonts() {
-                if ('fonts' in document) {
-                    Promise.all([
-                        document.fonts.load('1em Inter'),
-                        document.fonts.load('700 1em "Space Grotesk"')
-                    ]).then(function() {
-                        fontsReady = true;
-                        tryHide();
-                    }).catch(function() {
-                        fontsReady = true; // fallback
-                        tryHide();
-                    });
-                } else {
-                    // No Font Loading API, assume fonts are ready after a short delay
-                    setTimeout(function() {
-                        fontsReady = true;
-                        tryHide();
-                    }, 300);
-                }
-            }
-            
-            function tryHide() {
-                if (!cssReady || !fontsReady) return;
-                
+            if (preloader) {
                 // Add hidden class to trigger fade-out
                 preloader.classList.add('preloader-hidden');
                 // Remove from DOM after animation completes
@@ -1931,23 +1840,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     preloader.style.display = 'none';
                 }, 500);
             }
-            
-            // Start checking
-            checkCSS();
-            checkFonts();
-            
-            // Safety fallback: hide after max 2.5 seconds
-            setTimeout(function() {
-                if (!preloader.classList.contains('preloader-hidden')) {
-                    preloader.classList.add('preloader-hidden');
-                    setTimeout(function() {
-                        preloader.style.display = 'none';
-                    }, 500);
-                }
-            }, 2500);
-        })();
+        });
+        
+        // Fallback: hide preloader after max 3 seconds (in case load event fails)
+        setTimeout(function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('preloader-hidden')) {
+                preloader.classList.add('preloader-hidden');
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        }, 3000);
     </script>
-
 
 </body>
 </html>
