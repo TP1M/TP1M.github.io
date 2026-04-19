@@ -48,7 +48,39 @@
     </script>
     
     
-    <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Preconnect to CDN for faster Tailwind loading -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    
+    
+    
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'grotesk': ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        'primary-light': '#818cf8',
+                        'primary-dark': '#4f46e5',
+                    },
+                    animation: {
+                        'float-slow': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com" async></script>
     
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
@@ -597,33 +629,7 @@
           font-display: swap;
           src: url('/fonts/space-grotesk-700.woff2') format('woff2');
         }
-    </style>
-    
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                        'grotesk': ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#6366f1',
-                        'primary-light': '#818cf8',
-                        'primary-dark': '#4f46e5',
-                    },
-                    animation: {
-                        'float-slow': 'float 6s ease-in-out infinite',
-                        'shimmer': 'shimmer 3s linear infinite',
-                        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
-                    }
-                }
-            }
-        }
-    </script>
-</head>
+    </style></head>
 <body class="font-inter bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
 
     
