@@ -800,15 +800,20 @@
             background: #0f172a !important;
         }
         
-        /* Cleaner navigation */
+        /* Cleaner navigation - white glassmorphism, not glossy */
         .theme-new-design-1 .nav-main.glass-dark {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+            background: rgba(255, 255, 255, 0.88) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(30, 58, 138, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
         .theme-new-design-1.dark .nav-main.glass-dark {
-            background: rgba(15, 23, 42, 0.95) !important;
-            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+            background: rgba(15, 23, 42, 0.92) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.12);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
         
         /* Version switcher - match theme */
@@ -826,20 +831,63 @@
             text-shadow: none !important;
         }
         
-        /* Process step circles - simplified */
+        /* Process step circles - business tale colors */
         .theme-new-design-1 .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600,
+        .theme-new-design-1 .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600 {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%) !important;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+        }
         .theme-new-design-1 .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600,
-        .theme-new-design-1 .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600 {
-            background: var(--color-primary) !important;
+        .theme-new-design-1 .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600 {
+            background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%) !important;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+        }
+        .theme-new-design-1 .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600,
+        .theme-new-design-1 .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600 {
+            background: linear-gradient(135deg, #1e3a8a 0%, #8b5cf6 100%) !important;
             border: 1px solid rgba(30, 58, 138, 0.2);
         }
         .theme-new-design-1.dark .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600,
+        .theme-new-design-1.dark .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600 {
+            background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
         .theme-new-design-1.dark .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600,
-        .theme-new-design-1.dark .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600 {
-            background: var(--color-accent) !important;
+        .theme-new-design-1.dark .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600 {
+            background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%) !important;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+        .theme-new-design-1.dark .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600,
+        .theme-new-design-1.dark .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600 {
+            background: linear-gradient(135deg, #1e3a8a 0%, #8b5cf6 100%) !important;
             border: 1px solid rgba(14, 165, 233, 0.3);
         }
         
+        /* Hero business style lines - very subtle */
+        .theme-new-design-1 .business-lines {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(30, 58, 138, 0.02) 1px, rgba(30, 58, 138, 0.02) 2px),
+                repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(30, 58, 138, 0.02) 1px, rgba(30, 58, 138, 0.02) 2px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .theme-new-design-1.dark .business-lines {
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(14, 165, 233, 0.03) 1px, rgba(14, 165, 233, 0.03) 2px),
+                repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(14, 165, 233, 0.03) 1px, rgba(14, 165, 233, 0.03) 2px);
+        }
+        
+        /* Contact messenger icons - match footer background */
+        .theme-new-design-1 .w-14.h-14.rounded-xl.bg-gray-500 {
+            background: #1e293b !important;
+        }
+        .theme-new-design-1.dark .w-14.h-14.rounded-xl.bg-gray-500,
+        .theme-new-design-1.dark .w-14.h-14.rounded-xl.dark\\:bg-gray-400 {
+            background: #0c1324 !important;
+        }
         /* Contact form note - clean */
         .theme-new-design-1 .mt-12.p-6.rounded-2xl.bg-gradient-to-r.from-primary\\/5.to-purple-500\\/5 {
             background: rgba(30, 58, 138, 0.05) !important;
@@ -972,6 +1020,8 @@
         
         <div class="absolute top-20 right-20 w-64 h-64 border-2 border-primary/30 rounded-3xl rotate-45"></div>
         <div class="absolute bottom-40 left-20 w-48 h-48 border-2 border-primary/20 rounded-2xl rotate-12"></div>
+        
+        <div class="business-lines"></div>
         
         <div class="container-custom relative z-10">
             <div class="max-w-4xl">
