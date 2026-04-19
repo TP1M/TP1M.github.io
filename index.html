@@ -683,6 +683,241 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
+        /* ===== NEW DESIGN 1 - BUSINESS MINIMALISTIC ===== */
+        .theme-new-design-1 {
+            /* Typography: More professional */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        /* Solid background instead of gradient */
+        .theme-new-design-1 section.relative.min-h-screen .absolute.inset-0.bg-gradient-to-br {
+            background: #ffffff !important;
+        }
+        .theme-new-design-1.dark section.relative.min-h-screen .absolute.inset-0.bg-gradient-to-br {
+            background: #0f172a !important;
+        }
+        
+        /* Hide blurry gradient circles completely */
+        .theme-new-design-1 .absolute.bg-gradient-to-r.rounded-full.blur-3xl {
+            opacity: 0 !important;
+            display: none !important;
+        }
+        
+        /* Hide geometric shapes */
+        .theme-new-design-1 .absolute.border-2.rounded-3xl.rotate-45,
+        .theme-new-design-1 .absolute.border-2.rounded-2xl.rotate-12 {
+            opacity: 0 !important;
+            display: none !important;
+        }
+        
+        /* Professional badge - clean and minimal */
+        .theme-new-design-1 .inline-flex.items-center.gap-3.px-6.py-3.rounded-full.bg-white\\/80,
+        .theme-new-design-1 .inline-flex.items-center.gap-3.px-8.py-4.rounded-full.bg-white\\/80 {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: none !important;
+            border: 1px solid rgba(30, 58, 138, 0.1) !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .theme-new-design-1.dark .inline-flex.items-center.gap-3.px-6.py-3.rounded-full,
+        .theme-new-design-1.dark .inline-flex.items-center.gap-3.px-8.py-4.rounded-full {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border: 1px solid rgba(14, 165, 233, 0.15) !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Solid text instead of gradient */
+        .theme-new-design-1 .gradient-text {
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+            background-clip: initial !important;
+            color: var(--color-primary) !important;
+        }
+        .theme-new-design-1.dark .gradient-text {
+            color: var(--color-accent-light) !important;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .theme-new-design-1 .btn-primary {
+            background: var(--color-primary) !important;
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+            border: 1px solid transparent;
+            border-radius: 8px !important;
+        }
+        .theme-new-design-1 .btn-primary:hover {
+            background: var(--color-accent-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+        }
+        
+        .theme-new-design-1 .btn-secondary {
+            background: transparent !important;
+            border: 1px solid var(--color-primary) !important;
+            color: var(--color-primary) !important;
+            border-radius: 8px !important;
+        }
+        .theme-new-design-1.dark .btn-secondary {
+            border-color: var(--color-accent) !important;
+            color: var(--color-accent) !important;
+        }
+        
+        /* ===== SERVICE CARDS ===== */
+        .theme-new-design-1 .service-card {
+            background: white !important;
+            border: 1px solid rgba(30, 58, 138, 0.08) !important;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
+            border-radius: 12px !important;
+        }
+        .theme-new-design-1.dark .service-card {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border: 1px solid rgba(14, 165, 233, 0.12) !important;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .theme-new-design-1 .service-card.card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(30, 58, 138, 0.08) !important;
+        }
+        .theme-new-design-1.dark .service-card.card-hover:hover {
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.12) !important;
+        }
+        
+        /* Service icon - clean circle */
+        .theme-new-design-1 .service-icon {
+            background: rgba(30, 58, 138, 0.08) !important;
+            border: 1px solid rgba(30, 58, 138, 0.1) !important;
+            border-radius: 12px !important;
+        }
+        .theme-new-design-1.dark .service-icon {
+            background: rgba(14, 165, 233, 0.12) !important;
+            border-color: rgba(14, 165, 233, 0.15) !important;
+        }
+        
+        /* ===== CONTACT FORM ===== */
+        .theme-new-design-1 .form-input {
+            background: white !important;
+            border: 1px solid rgba(30, 58, 138, 0.15) !important;
+            border-radius: 8px !important;
+        }
+        .theme-new-design-1.dark .form-input {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border: 1px solid rgba(14, 165, 233, 0.15) !important;
+        }
+        
+        .theme-new-design-1 .form-input:focus {
+            border-color: var(--color-accent) !important;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1) !important;
+        }
+        
+        /* ===== FOOTER ===== */
+        .theme-new-design-1 footer.bg-gray-900 {
+            background: #1e293b !important;
+        }
+        .theme-new-design-1.dark footer.bg-gray-900 {
+            background: #0c1324 !important;
+        }
+        
+        /* ===== SOCIAL BUTTONS ===== */
+        .theme-new-design-1 .w-\\[1\\.35rem\\].h-\\[1\\.35rem\\].rounded-full.bg-gray-100,
+        .theme-new-design-1 .w-\\[2\\.25rem\\].h-\\[2\\.25rem\\].rounded-full.bg-gray-100 {
+            background: rgba(30, 58, 138, 0.08) !important;
+            border: 1px solid rgba(30, 58, 138, 0.12);
+        }
+        .theme-new-design-1.dark .w-\\[1\\.35rem\\].h-\\[1\\.35rem\\].rounded-full,
+        .theme-new-design-1.dark .w-\\[2\\.25rem\\].h-\\[2\\.25rem\\].rounded-full {
+            background: rgba(14, 165, 233, 0.12) !important;
+            border-color: rgba(14, 165, 233, 0.2);
+        }
+        
+        /* Dark mode toggle */
+        .theme-new-design-1 #darkModeToggle:hover {
+            background: var(--color-primary) !important;
+        }
+        
+        /* ===== MISC ===== */
+        /* Subtle animations only */
+        .theme-new-design-1 .animate-pulse {
+            animation-duration: 2s;
+            opacity: 0.7;
+        }
+        
+        /* Cleaner section backgrounds */
+        .theme-new-design-1 .bg-gradient-to-r.from-gray-50\\/50.to-white\\/50 {
+            background: #f8fafc !important;
+        }
+        .theme-new-design-1.dark .bg-gradient-to-r.from-gray-50\\/50.to-white\\/50,
+        .theme-new-design-1.dark .bg-gradient-to-r.from-gray-900\\/50.to-gray-950\\/50 {
+            background: #0f172a !important;
+        }
+        
+        /* Cleaner navigation */
+        .theme-new-design-1 .nav-main.glass-dark {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+        }
+        .theme-new-design-1.dark .nav-main.glass-dark {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+        }
+        
+        /* Version switcher - match theme */
+        .theme-new-design-1 .version-switcher {
+            background: rgba(30, 58, 138, 0.08) !important;
+            border: 1px solid rgba(30, 58, 138, 0.12) !important;
+        }
+        .theme-new-design-1.dark .version-switcher {
+            background: rgba(14, 165, 233, 0.12) !important;
+            border: 1px solid rgba(14, 165, 233, 0.2) !important;
+        }
+        
+        /* Remove excessive text shadows */
+        .theme-new-design-1 .text-shadow-lg {
+            text-shadow: none !important;
+        }
+        
+        /* Process step circles - simplified */
+        .theme-new-design-1 .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600,
+        .theme-new-design-1 .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600,
+        .theme-new-design-1 .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600 {
+            background: var(--color-primary) !important;
+            border: 1px solid rgba(30, 58, 138, 0.2);
+        }
+        .theme-new-design-1.dark .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600,
+        .theme-new-design-1.dark .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600,
+        .theme-new-design-1.dark .w-24.h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600 {
+            background: var(--color-accent) !important;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+        
+        /* Contact form note - clean */
+        .theme-new-design-1 .mt-12.p-6.rounded-2xl.bg-gradient-to-r.from-primary\\/5.to-purple-500\\/5 {
+            background: rgba(30, 58, 138, 0.05) !important;
+            border: 1px solid rgba(30, 58, 138, 0.1);
+        }
+        .theme-new-design-1.dark .mt-12.p-6.rounded-2xl.bg-gradient-to-r.from-primary\\/5.to-purple-500\\/5 {
+            background: rgba(14, 165, 233, 0.08) !important;
+            border: 1px solid rgba(14, 165, 233, 0.15);
+        }
+        
+        /* Process line - subtle */
+        .theme-new-design-1 .h-0\\.5.bg-gradient-to-r.from-primary\\/30.via-primary\\/50.to-primary\\/30 {
+            background: rgba(30, 58, 138, 0.1) !important;
+        }
+        .theme-new-design-1.dark .h-0\\.5.bg-gradient-to-r.from-primary\\/30.via-primary\\/50.to-primary\\/30 {
+            background: rgba(14, 165, 233, 0.15) !important;
+        }
+        
+        /* Form submit button - solid */
+        .theme-new-design-1 button.bg-gradient-to-r.from-primary.to-purple-600 {
+            background: var(--color-primary) !important;
+        }
+        .theme-new-design-1.dark button.bg-gradient-to-r.from-primary.to-purple-600 {
+            background: var(--color-accent) !important;
+        }
+
     </style>
     
     
