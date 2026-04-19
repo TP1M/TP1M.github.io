@@ -60,28 +60,18 @@ git show main-version
 
 ---
 
-## 🧪 **Live Experiment: Hamburger Menu & Version Switcher**
+## 🎨 **New Design 1: Business Minimalistic (Now Default)**
 
-**Commit:** `fed4076` (18 April 2026)  
-**Status:** Active experiment on `main` branch with complete New Design 1
+**Commit:** `f5cded9` (18 April 2026)  
+**Status:** Permanent default design on `main` branch
 
-### 🔧 **What's New**
-| **Feature** | **Description** |
-|-------------|-----------------|
-| **Hamburger menu** | Mobile‑only toggle (≤768px) that reveals social buttons, version switcher, and dark‑mode toggle |
-| **Version switcher** | Button in header toggles between **Original** (v1) and **New Design 1** (v2) |
-| **New theme** | `theme‑new‑design‑1` CSS class with complete business minimalistic redesign |
-| **Dark‑mode support** | Full dark mode compatibility with adjusted colors |
-| **Persistence** | User's version preference stored in `localStorage` (`siteVersion`) |
-
-### 🎨 **New Design 1: Business Minimalistic**
-**Color Palette:**
+### 🎨 **Color Palette**
 - **Primary:** `#1e3a8a` (navy blue)
 - **Accent:** `#0ea5e9` (sky blue)
 - **Backgrounds:** Solid white (`#ffffff`) / dark blue (`#0f172a`)
 - **Cards:** Clean white with subtle borders and shadows
 
-**Key Design Changes:**
+### 🔧 **Key Design Changes**
 1. **Hero section** – Solid backgrounds, decorative gradients and shapes removed
 2. **Typography** – Gradient text replaced with solid colors
 3. **Buttons** – Solid colors with subtle shadows, rounded corners
@@ -94,23 +84,17 @@ git show main-version
 
 **Layout:** Unchanged – same HTML structure, Tailwind classes, and GSAP animations.
 
-### 🔄 **How to Toggle**
-1. **On desktop:** Click the version switcher button (right of social icons)
-2. **On mobile:** Open hamburger menu, then tap version switcher
-3. **State persists** across page reloads
+### 📱 **Mobile Experience**
+- **Hamburger menu** for mobile (≤768px) reveals social buttons and dark‑mode toggle
+- **Version switcher removed** – New Design 1 is now the permanent default
+- **Hamburger menu functionality retained** for mobile usability
 
-### ⚠️ **Reverting to Original**
+### ⚠️ **Reverting to Original Design**
 - The `main‑version` tag remains untouched (`git checkout main‑version`)
-- To remove experiment entirely:
+- To restore original design:
   ```bash
   git checkout main-version -- index.html
   ```
-- Or toggle back to **Original** using the version switcher button
-
-### 📱 **Mobile Behavior**
-- Hamburger icon appears only on small screens
-- Clicking toggles a dropdown with all header actions
-- Menu closes when clicking outside or selecting an item
 
 ---
 
