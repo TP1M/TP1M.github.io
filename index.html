@@ -856,13 +856,7 @@
                 repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(14, 165, 233, 0.03) 1px, rgba(14, 165, 233, 0.03) 2px);
         }
         
-        /* Prevent scaling/transform on about section */
-        .theme-new-design-1 .static-section,
-        .theme-new-design-1 .static-section * {
-            transform: scale(1) !important;
-            animation: none !important;
-            transition: none !important;
-        }
+
         
 
         
@@ -939,6 +933,22 @@
             transform-origin: center !important;
             animation: none !important;
             transition: none !important;
+        }
+        
+        /* Prevent mobile collapse for about section */
+        html.theme-new-design-1 #about {
+            position: relative;
+            z-index: 1;
+            min-height: 0;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            html.theme-new-design-1 #about {
+                padding-top: calc(var(--section-spacing) + env(safe-area-inset-top, 0px)) !important;
+                padding-bottom: calc(var(--section-spacing) + env(safe-area-inset-bottom, 0px)) !important;
+                min-height: fit-content;
+                box-sizing: border-box;
+            }
         }
 
     </style>
@@ -1088,7 +1098,7 @@
     </section>
 
     
-    <div class="py-16 bg-gradient-to-r from-gray-50/50 to-white/50 dark:from-gray-900/50 dark:to-gray-950/50 static-section">
+    <section id="about" class="section-spacing bg-gradient-to-r from-gray-50/50 to-white/50 dark:from-gray-900/50 dark:to-gray-950/50 static-section">
         <div class="container-custom">
             <div class="max-w-4xl mx-auto text-center">
                 
@@ -1103,7 +1113,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </section>
 
     
     <section id="services" class="section-spacing bg-gray-50 dark:bg-gray-900">
