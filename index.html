@@ -51,8 +51,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     
     <style>
@@ -205,6 +212,12 @@
 
         .icon-3d:hover {
             transform: rotateY(180deg) scale(1.1);
+        }
+        /* Material Symbols icons */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: inherit;
+            vertical-align: middle;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -560,82 +573,7 @@
             scroll-margin-top: 80px;
         }
 
-
-        /* Self-hosted Google Fonts - subsetted to required weights */
-        @font-face {
-          font-family: 'Inter';
-          font-style: normal;
-          font-weight: 400;
-          font-display: swap;
-          src: url('/fonts/inter-regular.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Inter';
-          font-style: normal;
-          font-weight: 500;
-          font-display: swap;
-          src: url('/fonts/inter-500.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Inter';
-          font-style: normal;
-          font-weight: 600;
-          font-display: swap;
-          src: url('/fonts/inter-600.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Inter';
-          font-style: normal;
-          font-weight: 700;
-          font-display: swap;
-          src: url('/fonts/inter-700.woff2') format('woff2');
-        }
-        @font-face {
-          font-family: 'Space Grotesk';
-          font-style: normal;
-          font-weight: 700;
-          font-display: swap;
-          src: url('/fonts/space-grotesk-700.woff2') format('woff2');
-        }
-    
-        /* Minimal preloader - single animated line */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        .dark #preloader {
-            background: #0f1117; /* dark:bg-gray-950 */
-        }
-        #preloader.preloader-hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        .preloader-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg,
-                rgba(99, 102, 241, 0) 0%,
-                #6366f1 25%,
-                #818cf8 50%,
-                #6366f1 75%,
-                rgba(99, 102, 241, 0) 100%);
-            background-size: 200% 100%;
-            animation: preloader-line 1.5s ease-in-out infinite;
-        }
-        @keyframes preloader-line {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-</style>
+    </style>
     
     
     <script>
@@ -661,13 +599,11 @@
             }
         }
     </script>
+    
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default,es5,es6,es7,fetch,Promise,Object.fromEntries"></script>
 </head>
 <body class="font-inter bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="preloader-line"></div>
-    </div>
-
 
     
     <script>
@@ -719,7 +655,7 @@
                     </a>
                     
                     <button id="darkModeToggle" class="w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-white transition-all" aria-label="Toggle dark mode">
-                        <i class="fas fa-sun" id="darkModeIcon"></i>
+                        <span class="material-symbols-outlined">sunny</span>
                     </button>
                 </div>
             </div>
@@ -790,7 +726,7 @@
                 
                 
                 <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                    პერსონალური ასისტენტთა გუნდი, "დამკვეთი-შემსრულებელი" მუშაობის პრინციპით — სწრაფი, მარტივი, მორგებული.​​​​​​​​​​​​​​​<br><br><span class="gradient-text font-bold">თქვენი მოთხოვნა, ჩვენი გადაწყვეტილებები</span>
+                    პერსონალურ ასისტენტთა გუნდი, "დამკვეთი-შემსრულებელი" მუშაობის პრინციპით — სწრაფი, მარტივი, მორგებული.​​​​​​​​​​​​​​​<br><br><span class="gradient-text font-bold">თქვენი მოთხოვნა, ჩვენი გადაწყვეტილებები</span>
                 </p>
             </div>
         </div>
@@ -1396,14 +1332,12 @@
             // Set initial icon based on current theme
             const updateDarkModeIcon = () => {
                 const isDark = document.documentElement.classList.contains('dark');
-                const icon = document.getElementById('darkModeIcon');
+                const icon = darkModeToggle.querySelector('span.material-symbols-outlined');
                 if (icon) {
                     if (isDark) {
-                        icon.classList.remove('fa-sun');
-                        icon.classList.add('fa-moon');
+                        icon.innerText = 'dark_mode';
                     } else {
-                        icon.classList.remove('fa-moon');
-                        icon.classList.add('fa-sun');
+                        icon.innerText = 'sunny';
                     }
                 }
             };
@@ -1584,18 +1518,16 @@
     if (darkModeToggle) {
         // Set initial icon based on current theme
         var updateDarkModeIcon = function() {
-                var isDark = document.documentElement.classList.contains('dark');
-                var icon = document.getElementById('darkModeIcon');
-                if (icon) {
-                    if (isDark) {
-                        icon.classList.remove('fa-sun');
-                        icon.classList.add('fa-moon');
-                    } else {
-                        icon.classList.remove('fa-moon');
-                        icon.classList.add('fa-sun');
-                    }
+            var isDark = document.documentElement.classList.contains('dark');
+            var icon = darkModeToggle.querySelector('span.material-symbols-outlined');
+            if (icon) {
+                if (isDark) {
+                    icon.innerText = 'dark_mode';
+                } else {
+                    icon.innerText = 'sunny';
                 }
-            };
+            }
+        };
 
         // Update icon initially
         updateDarkModeIcon();
@@ -1770,11 +1702,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 var appUri = appUriBuilder(href);
                 var fallbackTimer = setTimeout(function() {
                     window.location.href = href;
-                }, 1000);
-                window.location.href = appUri;
-                window.addEventListener('pagehide', function() {
+                }, 2000);
+                // Clear timer if app opens successfully
+                var clearFallback = function() {
                     clearTimeout(fallbackTimer);
-                });
+                    window.removeEventListener('pagehide', clearFallback);
+                    window.removeEventListener('blur', clearFallback);
+                };
+                window.addEventListener('pagehide', clearFallback);
+                window.addEventListener('blur', clearFallback);
+                // Try to open app, catch security errors (some browsers block custom schemes)
+                try {
+                    window.location.href = appUri;
+                } catch (err) {
+                    console.warn('App scheme error:', err);
+                    clearFallback();
+                    window.location.href = href;
+                }
             });
         });
     }
@@ -1785,41 +1729,19 @@ document.addEventListener('DOMContentLoaded', function() {
         var text = '';
         var match = href.match(/text=([^&]+)/);
         if (match) text = decodeURIComponent(match[1]);
+        // tg://msg works for phone numbers
         return 'tg://msg?to=' + encodeURIComponent(phone) + '&text=' + encodeURIComponent(text);
     });
     
     // Messenger links
     setupAppLinks('a.messenger-link', function(href) {
+        // fb-messenger://share opens share dialog with link
+        // Note: This may not prefill text. For better experience, use Facebook Page ID:
+        // fb-messenger-public://user-thread/<page-id>?text=...
+        // Replace 'username' with actual Facebook Page username in href
         return 'fb-messenger://share?link=' + encodeURIComponent(href);
     });
 });
 </script>
-
-    <script>
-        // Hide preloader when page is fully loaded
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                // Add hidden class to trigger fade-out
-                preloader.classList.add('preloader-hidden');
-                // Remove from DOM after animation completes
-                setTimeout(function() {
-                    preloader.style.display = 'none';
-                }, 500);
-            }
-        });
-        
-        // Fallback: hide preloader after max 3 seconds (in case load event fails)
-        setTimeout(function() {
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('preloader-hidden')) {
-                preloader.classList.add('preloader-hidden');
-                setTimeout(function() {
-                    preloader.style.display = 'none';
-                }, 500);
-            }
-        }, 3000);
-    </script>
-
 </body>
 </html>
