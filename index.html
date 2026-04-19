@@ -130,6 +130,26 @@
             --shadow-xl: 0 40px 80px rgba(0, 0, 0, 0.5);
         }
 
+        .theme-new-design-1 {
+            /* Classic Business Palette 2026 */
+            --color-primary: #1e3a8a;
+            --color-secondary: #374151;
+            --color-accent: #0ea5e9;
+            --color-accent-light: #38bdf8;
+            --color-accent-dark: #0284c7;
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
+            --gradient-subtle: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            --gradient-dark: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(55, 65, 81, 0.95) 100%);
+        }
+        .theme-new-design-1.dark {
+            --color-surface: #0f172a;
+            --color-surface-dark: #0c1324;
+            --color-text: #f1f5f9;
+            --color-text-light: #94a3b8;
+            --color-border: #334155;
+        }
+
         html {
             scroll-behavior: auto;
             font-size: 16px;
@@ -573,6 +593,96 @@
             scroll-margin-top: 80px;
         }
 
+        /* ===== HAMBURGER MENU ===== */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        .hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            border-radius: 1px;
+            transition: transform var(--transition-base), opacity var(--transition-base);
+        }
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+            .nav-main .flex.items-center.space-x-4 {
+                display: none;
+            }
+            .nav-main .flex.items-center.space-x-4.mobile-open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: var(--header-height);
+                right: 24px;
+                background: var(--gradient-dark);
+                backdrop-filter: blur(20px);
+                border-radius: var(--radius-md);
+                padding: 16px;
+                gap: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                min-width: 180px;
+            }
+        }
+
+        /* ===== VERSION SWITCHER ===== */
+        .version-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: inherit;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        .version-switcher:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .version-switcher.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+        }
+        .version-switcher .version-badge {
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .version-switcher.active .version-badge {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
     </style>
     
     
@@ -641,8 +751,15 @@
                 
                 <a href="#" class="text-2xl font-grotesk font-bold gradient-text">Persona</a>
                 
+                <!-- Hamburger menu button (mobile only) -->
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 
-                <div class="flex items-center space-x-4">
+                <!-- Navigation buttons (social, version switcher, dark mode) -->
+                <div class="flex items-center space-x-4" id="navButtons">
                     <a href="https://wa.me/995598428842?text=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%21%20%E1%83%9B%E1%83%A1%E1%83%A3%E1%83%A0%E1%83%A1%20%E1%83%97%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A1%E1%83%94%E1%83%A0%E1%83%95%E1%83%98%E1%83%A1%E1%83%98%E1%83%97%20%E1%83%A1%E1%83%90%E1%83%A0%E1%83%92%E1%83%94%E1%83%91%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%2C%20%E1%83%9B%E1%83%90%E1%83%A5%E1%83%95%E1%83%A1%20%E1%83%A0%E1%83%90%E1%83%9B%E1%83%9D%E1%83%93%E1%83%94%E1%83%9C%E1%83%98%E1%83%9B%E1%83%94%20%E1%83%A8%E1%83%94%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90" class="w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-green-500 hover:text-white transition-all" aria-label="WhatsApp" target="_blank" rel="noopener">
                         <i class="fab fa-whatsapp"></i>
                     </a>
@@ -653,6 +770,13 @@
                         <i class="fab fa-facebook-messenger"></i>
                     </a>
                     
+                    <!-- Version Switcher -->
+                    <button class="version-switcher" id="versionSwitcher" aria-label="Switch design version">
+                        <span class="version-badge">v1</span>
+                        <span>Original</span>
+                    </button>
+                    
+                    <!-- Dark Mode Toggle -->
                     <button id="darkModeToggle" class="w-[1.35rem] h-[1.35rem] md:w-[2.25rem] md:h-[2.25rem] text-[0.7875rem] md:text-[0.9rem] rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-white transition-all" aria-label="Toggle dark mode">
                         <span class="material-symbols-outlined">sunny</span>
                     </button>
@@ -1739,6 +1863,65 @@ document.addEventListener('DOMContentLoaded', function() {
         // Replace 'username' with actual Facebook Page username in href
         return 'fb-messenger://share?link=' + encodeURIComponent(href);
     });
+});
+</script>
+
+<script>
+// Hamburger menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navButtons = document.getElementById('navButtons');
+    
+    if (hamburgerMenu && navButtons) {
+        hamburgerMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navButtons.classList.toggle('mobile-open');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!hamburgerMenu.contains(event.target) && !navButtons.contains(event.target)) {
+                hamburgerMenu.classList.remove('active');
+                navButtons.classList.remove('mobile-open');
+            }
+        });
+    }
+    
+    // Version switcher
+    const versionSwitcher = document.getElementById('versionSwitcher');
+    const html = document.documentElement;
+    const VERSION_ORIGINAL = 'original';
+    const VERSION_NEW = 'new-design-1';
+    
+    // Load saved version from localStorage
+    const savedVersion = localStorage.getItem('siteVersion') || VERSION_ORIGINAL;
+    
+    function setVersion(version) {
+        if (version === VERSION_NEW) {
+            html.classList.add('theme-new-design-1');
+            versionSwitcher.querySelector('.version-badge').textContent = 'v2';
+            versionSwitcher.querySelector('span:last-child').textContent = 'New Design 1';
+            versionSwitcher.classList.add('active');
+        } else {
+            html.classList.remove('theme-new-design-1');
+            versionSwitcher.querySelector('.version-badge').textContent = 'v1';
+            versionSwitcher.querySelector('span:last-child').textContent = 'Original';
+            versionSwitcher.classList.remove('active');
+        }
+        localStorage.setItem('siteVersion', version);
+    }
+    
+    // Apply saved version
+    setVersion(savedVersion);
+    
+    // Toggle on click
+    if (versionSwitcher) {
+        versionSwitcher.addEventListener('click', function() {
+            const current = html.classList.contains('theme-new-design-1') ? VERSION_NEW : VERSION_ORIGINAL;
+            const next = current === VERSION_ORIGINAL ? VERSION_NEW : VERSION_ORIGINAL;
+            setVersion(next);
+        });
+    }
 });
 </script>
 </body>
