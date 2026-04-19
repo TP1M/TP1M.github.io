@@ -60,6 +60,46 @@ git show main-version
 
 ---
 
+## 🧪 **Live Experiment: Hamburger Menu & Version Switcher**
+
+**Commit:** `79481d7` (18 April 2026)  
+**Status:** Active experiment on `main` branch
+
+### 🔧 **What's New**
+| **Feature** | **Description** |
+|-------------|-----------------|
+| **Hamburger menu** | Mobile‑only toggle (≤768px) that reveals social buttons, version switcher, and dark‑mode toggle |
+| **Version switcher** | Button in header toggles between **Original** (v1) and **New Design 1** (v2) |
+| **New theme** | `theme‑new‑design‑1` CSS class with classic business palette (navy blue, sky blue accent) |
+| **Dark‑mode support** | Adjusted colors for new theme (`theme‑new‑design‑1.dark`) |
+| **Persistence** | User's version preference stored in `localStorage` (`siteVersion`) |
+
+### 🎨 **New Design 1 Colors**
+- **Primary:** `#1e3a8a` (navy)
+- **Accent:** `#0ea5e9` (sky blue)
+- **Gradients:** Blue‑based gradients replace purple/pink originals
+- **Dark mode:** Slate blue background (`#0f172a`)
+
+### 🔄 **How to Toggle**
+1. **On desktop:** Click the version switcher button (right of social icons)
+2. **On mobile:** Open hamburger menu, then tap version switcher
+3. **State persists** across page reloads
+
+### ⚠️ **Reverting to Original**
+- The `main‑version` tag remains untouched (`git checkout main‑version`)
+- To remove experiment entirely:
+  ```bash
+  git checkout main-version -- index.html
+  ```
+- Or toggle back to **Original** using the version switcher button
+
+### 📱 **Mobile Behavior**
+- Hamburger icon appears only on small screens
+- Clicking toggles a dropdown with all header actions
+- Menu closes when clicking outside or selecting an item
+
+---
+
 ## 🗂️ **Repository Structure**
 
 ```
