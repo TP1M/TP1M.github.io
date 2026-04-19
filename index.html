@@ -724,13 +724,14 @@
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15) !important;
         }
         
-        .theme-new-design-1 .service-card.card-hover:hover {
+        /* Service card hover effects removed per request */
+        /* .theme-new-design-1 .service-card.card-hover:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 24px rgba(30, 58, 138, 0.08) !important;
         }
         .theme-new-design-1.dark .service-card.card-hover:hover {
             box-shadow: 0 8px 24px rgba(14, 165, 233, 0.12) !important;
-        }
+        } */
         
         /* Service icon - clean circle */
         .theme-new-design-1 .service-icon {
@@ -886,6 +887,44 @@
             transform: scale(1) !important;
             animation: none !important;
             transition: none !important;
+        }
+        
+        /* Force solid colors on process step circles with high specificity */
+        html.theme-new-design-1 #how .w-20.h-20.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600,
+        html.theme-new-design-1 #how .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600 {
+            background: #1e3a8a !important;
+            background-image: none !important;
+            border: 1px solid rgba(30, 58, 138, 0.2) !important;
+        }
+        html.theme-new-design-1 #how .w-20.h-20.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600,
+        html.theme-new-design-1 #how .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600 {
+            background: #0ea5e9 !important;
+            background-image: none !important;
+            border: 1px solid rgba(30, 58, 138, 0.2) !important;
+        }
+        html.theme-new-design-1 #how .w-20.h-20.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600,
+        html.theme-new-design-1 #how .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600 {
+            background: #8b5cf6 !important;
+            background-image: none !important;
+            border: 1px solid rgba(30, 58, 138, 0.2) !important;
+        }
+        html.theme-new-design-1.dark #how .w-20.h-20.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600,
+        html.theme-new-design-1.dark #how .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-primary.to-purple-600 {
+            background: #0ea5e9 !important;
+            background-image: none !important;
+            border: 1px solid rgba(14, 165, 233, 0.3) !important;
+        }
+        html.theme-new-design-1.dark #how .w-20.h-20.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600,
+        html.theme-new-design-1.dark #how .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-purple-600.to-pink-600 {
+            background: #10b981 !important;
+            background-image: none !important;
+            border: 1px solid rgba(14, 165, 233, 0.3) !important;
+        }
+        html.theme-new-design-1.dark #how .w-20.h-20.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600,
+        html.theme-new-design-1.dark #how .w-20.h-20.md\\:w-24.md\\:h-24.rounded-2xl.bg-gradient-to-br.from-pink-600.to-rose-600 {
+            background: #8b5cf6 !important;
+            background-image: none !important;
+            border: 1px solid rgba(14, 165, 233, 0.3) !important;
         }
         
         /* Contact messenger icons - match footer background */
