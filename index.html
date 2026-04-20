@@ -978,6 +978,33 @@
             }
         }
 
+        /* Messenger icons with brand colors at 50% transparency */
+        .theme-new-design-1 .whatsapp-icon {
+            background-color: rgba(37, 211, 102, 0.5) !important;
+        }
+        .theme-new-design-1 .telegram-icon {
+            background-color: rgba(0, 136, 204, 0.5) !important;
+        }
+        .theme-new-design-1 .messenger-icon {
+            background-color: rgba(0, 132, 255, 0.5) !important;
+        }
+        /* Dark mode - slightly more opacity for better visibility */
+        .theme-new-design-1.dark .whatsapp-icon {
+            background-color: rgba(37, 211, 102, 0.6) !important;
+        }
+        .theme-new-design-1.dark .telegram-icon {
+            background-color: rgba(0, 136, 204, 0.6) !important;
+        }
+        .theme-new-design-1.dark .messenger-icon {
+            background-color: rgba(0, 132, 255, 0.6) !important;
+        }
+        /* Keep white icon text for contrast */
+        .theme-new-design-1 .whatsapp-icon,
+        .theme-new-design-1 .telegram-icon,
+        .theme-new-design-1 .messenger-icon {
+            color: white !important;
+        }
+
     </style>
     
     
@@ -1116,6 +1143,26 @@
                         <span>ჩვენი სერვისები</span>
                         <i class="fas fa-chevron-down"></i>
                     </a>
+                </div>
+                
+                <!-- Super minimalistic business details -->
+                <div class="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gray-500 dark:text-gray-400 opacity-75">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-clock text-xs opacity-60"></i>
+                        <span>24/7 მხარდაჭერა</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-bolt text-xs opacity-60"></i>
+                        <span>5 წუთში პასუხი</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-robot text-xs opacity-60"></i>
+                        <span>AI-დაფუძნებული</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-users text-xs opacity-60"></i>
+                        <span>პროფესიონალი გუნდი</span>
+                    </div>
                 </div>
                 
 
@@ -1546,7 +1593,7 @@
                             
                             <a href="https://wa.me/995598428842?text=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%21%20%E1%83%9B%E1%83%A1%E1%83%A3%E1%83%A0%E1%83%A1%20%E1%83%97%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A1%E1%83%94%E1%83%A0%E1%83%95%E1%83%98%E1%83%A1%E1%83%98%E1%83%97%20%E1%83%A1%E1%83%90%E1%83%A0%E1%83%92%E1%83%94%E1%83%91%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%2C%20%E1%83%9B%E1%83%90%E1%83%A5%E1%83%95%E1%83%A1%20%E1%83%A0%E1%83%90%E1%83%9B%E1%83%9D%E1%83%93%E1%83%94%E1%83%9C%E1%83%98%E1%83%9B%E1%83%94%20%E1%83%A8%E1%83%94%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90" class="group flex items-center justify-between p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary transition-all" target="_blank" rel="noopener">
                                 <div class="flex items-center gap-6">
-                                    <div class="w-14 h-14 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-900 dark:text-white text-2xl group-hover:scale-110 transition-transform">
+                                    <div class="whatsapp-icon w-14 h-14 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform">
                                         <i class="fab fa-whatsapp"></i>
                                     </div>
                                     <div>
@@ -1560,7 +1607,7 @@
                             
                             <a href="https://t.me/+995598428842?text=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%21%20%E1%83%9B%E1%83%A1%E1%83%A3%E1%83%A0%E1%83%A1%20%E1%83%97%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A1%E1%83%94%E1%83%A0%E1%83%95%E1%83%98%E1%83%A1%E1%83%98%E1%83%97%20%E1%83%A1%E1%83%90%E1%83%A0%E1%83%92%E1%83%94%E1%83%91%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%2C%20%E1%83%9B%E1%83%90%E1%83%A5%E1%83%95%E1%83%A1%20%E1%83%A0%E1%83%90%E1%83%9B%E1%83%9D%E1%83%93%E1%83%94%E1%83%9C%E1%83%98%E1%83%9B%E1%83%94%20%E1%83%A8%E1%83%94%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90" class="telegram-link group flex items-center justify-between p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary transition-all" target="_blank" rel="noopener">
                                 <div class="flex items-center gap-6">
-                                    <div class="w-14 h-14 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-900 dark:text-white text-2xl group-hover:scale-110 transition-transform">
+                                    <div class="telegram-icon w-14 h-14 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform">
                                         <i class="fab fa-telegram"></i>
                                     </div>
                                     <div>
@@ -1574,7 +1621,7 @@
                             
                             <a href="https://m.me/username?text=%E1%83%92%E1%83%90%E1%83%9B%E1%83%90%E1%83%A0%E1%83%AF%E1%83%9D%E1%83%91%E1%83%90%21%20%E1%83%9B%E1%83%A1%E1%83%A3%E1%83%A0%E1%83%A1%20%E1%83%97%E1%83%95%E1%83%94%E1%83%9C%E1%83%98%20%E1%83%A1%E1%83%94%E1%83%A0%E1%83%95%E1%83%98%E1%83%A1%E1%83%98%E1%83%97%20%E1%83%A1%E1%83%90%E1%83%A0%E1%83%92%E1%83%94%E1%83%91%E1%83%9A%E1%83%9D%E1%83%91%E1%83%90%2C%20%E1%83%9B%E1%83%90%E1%83%A5%E1%83%95%E1%83%A1%20%E1%83%A0%E1%83%90%E1%83%9B%E1%83%9D%E1%83%93%E1%83%94%E1%83%9C%E1%83%98%E1%83%9B%E1%83%94%20%E1%83%A8%E1%83%94%E1%83%99%E1%83%98%E1%83%97%E1%83%AE%E1%83%95%E1%83%90" class="messenger-link group flex items-center justify-between p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary transition-all" target="_blank" rel="noopener">
                                 <div class="flex items-center gap-6">
-                                    <div class="w-14 h-14 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-900 dark:text-white text-2xl group-hover:scale-110 transition-transform">
+                                    <div class="messenger-icon w-14 h-14 rounded-xl bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform">
                                         <i class="fab fa-facebook-messenger"></i>
                                     </div>
                                     <div>
