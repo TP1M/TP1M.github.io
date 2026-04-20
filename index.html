@@ -978,15 +978,21 @@
             }
         }
 
-        /* Messenger icons with brand colors at 50% transparency */
+        /* Messenger icons with brand colors at 50% transparency and material effect */
         .theme-new-design-1 .whatsapp-icon {
             background-color: rgba(37, 211, 102, 0.5) !important;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
         }
         .theme-new-design-1 .telegram-icon {
             background-color: rgba(0, 136, 204, 0.5) !important;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
         }
         .theme-new-design-1 .messenger-icon {
             background-color: rgba(0, 132, 255, 0.5) !important;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
         }
         /* Dark mode - slightly more opacity for better visibility */
         .theme-new-design-1.dark .whatsapp-icon {
@@ -997,6 +1003,12 @@
         }
         .theme-new-design-1.dark .messenger-icon {
             background-color: rgba(0, 132, 255, 0.6) !important;
+        }
+        /* Hover effect - subtle shadow elevation */
+        .theme-new-design-1 .whatsapp-icon:hover,
+        .theme-new-design-1 .telegram-icon:hover,
+        .theme-new-design-1 .messenger-icon:hover {
+            box-shadow: var(--shadow-md);
         }
         /* Keep white icon text for contrast */
         .theme-new-design-1 .whatsapp-icon,
