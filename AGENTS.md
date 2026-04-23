@@ -1,6 +1,38 @@
 # Persona.com.ge – Agent Memory
 
-This file contains repository‑specific knowledge, performance optimizations, and key versions for the `TP1M.github.io` site (live at **https://persona.com.ge**).
+This file contains repository‑specific knowledge, performance optimizations, and key versions for the `TP1M.github.io` site (live at **https://persona.com.ge**). Also includes agent speed/efficiency rules.
+
+---
+
+## ⚡ Speed & Efficiency Rules (for OpenHands)
+
+### 1. Batch operations over single edits
+- Combine multiple sed/grep operations into one command
+- Edit all similar files at once: `sed -i 's/pattern/replacement/g' *.html`
+- Use `&&` to chain commands
+
+### 2. Read first, edit later
+- Run `find` + `grep -rn` before any edits — understand full picture first
+- Then make one batch of edits — no explore→edit ping-pong
+
+### 3. No speculative work
+- Don't explore unless preparing an edit
+- Don't run tests unless verifying a change
+- Don't install deps unless needed
+
+### 4. Commit discipline
+- One commit per logical change: `git add -A && git commit -m "summary"`
+- Include `Co-authored-by: openhands <openhands@all-hands.dev>`
+
+### 5. File operations
+- Prefer `sed -i` for global search-and-replace over file_editor
+- Use `cat -n file | head -30` for quick previews
+- Use `grep -n` to find exact line numbers
+
+### 6. Communication
+- "why X happens" → just answer, don't fix
+- Discussion → don't make edits, just talk
+- Stuck after 2 attempts → stop and suggest new plan
 
 ---
 
@@ -20,20 +52,16 @@ This file contains repository‑specific knowledge, performance optimizations, a
 | **Polyfill.io** | Removed entirely | –200 KB, –1 RTT (unnecessary for modern browsers) |
 | **Google Fonts** | Already have `display=swap` | No FOIT |
 
-### 📝 **Content Updates (Latest)**
+### 📝 **Latest Edits (April 2026)**
 
-1. **Service block “ვებ‑საიტის/გვერდის შექმნა”**
-   - Removed “ახალი” badge
-   - Heading renamed from `ვებ/ლენდინგ გვერდის შექმნა`
-
-2. **Service block “იდეიდან ბიზნესამდე”**
-   - Price changed from `2,500 – 7,000 ₾` to **“შეთანხმებით”**
-   - “ახალი” badge color changed to **red** (`bg‑red‑500 text‑white`)
-
-3. **Grammar fix**
-   - `დომენი რეგისტრაცია` → `დომენის რეგისტრაცია`
-
-4. **Dropdown option** updated to match new heading.
+1. **Hero title:** Changed from `"თქვენი ბიზნესის / ონლაინ მხარდაჭერა"` → `"შენი პირადი / ონლაინ ასისტენტი"`
+2. **Service card arrows:** Removed all `contact-service-btn` arrow buttons + CSS
+3. **Hero background:** Replaced Font Awesome icons with stroked squares (no fill, rotated, varied sizes)
+4. **Messenger icons:** Added brand colors at 50% transparency + material shadow effect (`var(--shadow-sm)` / `--shadow-md` on hover)
+5. **Microsoft Clarity:** Added tracking script (`wg2oipqny2`) to `<head>`
+6. **Text update:** `"ვებ‑საიტის/გვერდის"` → `"ვებ‑საიტის/მაღაზიის"` (service card + dropdown)
+7. **Phone link:** Footer phone → `<a href="tel:...">` (clickable)
+8. **Grammar fix:** `დომენი რეგისტრაცია` → `დომენის რეგისტრაცია`
 
 ### 🎯 **Load‑Time Target**
 - **Goal:** ≈1‑1.5 seconds (down from ~5 seconds)
