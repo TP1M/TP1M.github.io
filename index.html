@@ -1013,10 +1013,10 @@
         /* ===== Mobile Service Carousel (scroll-snap) ===== */
         @media (max-width: 767px) {
             .services-grid {
-                display: flex;
-                flex-wrap: nowrap;
+                display: flex !important;
+                flex-wrap: nowrap !important;
                 gap: 0 !important;
-                overflow-x: auto;
+                overflow-x: auto !important;
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
@@ -1725,11 +1725,12 @@
                                     <label for="phone" class="block text-sm font-medium mb-2">ტელეფონი *</label>
                                     <input type="tel" id="phone" name="phone" class="form-input" placeholder="+995 5XX XX XX XX" required>
                                 </div>
-                            
+                            </div>
                             <div>
                                 <label for="business" class="block text-sm font-medium mb-2">ბიზნეს სახელი</label>
                                 <input type="text" id="business" name="business" class="form-input" placeholder="თქვენი ბიზნესის სახელი">
                             
+                            </div>
                             <div>
                                 <label for="service" class="block text-sm font-medium mb-2">სერვისი *</label>
                                 <select id="service" name="service" class="form-input" required>
@@ -1742,10 +1743,12 @@
                                     <option value="package">იდეიდან ბიზნესამდე</option>
                                     <option value="other">სხვა</option>
                                 </select>
+                            </div>
                             
                             <div>
                                 <label for="message" class="block text-sm font-medium mb-2">დამატებითი ინფორმაცია</label>
                                 <textarea id="message" name="message" rows="4" class="form-input" placeholder="შენიშვნები, სპეციალური მოთხოვნები..."></textarea>
+                            </div>
                             
                             
                             <input type="text" name="_honey" style="display: none">
