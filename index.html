@@ -1010,23 +1010,22 @@
             color: white !important;
         }
 
-        /* ===== Mobile Service Carousel ===== */
+        /* ===== Mobile Service Carousel (scroll-snap) ===== */
         @media (max-width: 767px) {
-            .services-carousel {
-                overflow: hidden;
-                position: relative;
-                touch-action: pan-y;
-            }
-            .services-carousel .carousel-track {
-                display: flex !important;
-                flex-wrap: nowrap !important;
+            .services-grid {
+                display: flex;
+                flex-wrap: nowrap;
                 gap: 0 !important;
-                transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                will-change: transform;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
             }
-            .services-carousel .carousel-track > .service-card {
+            .services-grid::-webkit-scrollbar { display: none; }
+            .services-grid > .service-card {
                 min-width: 100%;
                 flex-shrink: 0;
+                scroll-snap-align: start;
                 box-sizing: border-box;
             }
             .carousel-dots {
@@ -1050,24 +1049,14 @@
                 width: 24px;
                 border-radius: 4px;
             }
-            .dark .carousel-dots .dot {
-                background: #4b5563;
-            }
-            .dark .carousel-dots .dot.active {
-                background: var(--color-accent-light);
-            }
-            /* Additional services dots outside card */
-            .additional-carousel-dots {
-                margin-top: 12px;
-            }
+            .dark .carousel-dots .dot { background: #4b5563; }
+            .dark .carousel-dots .dot.active { background: var(--color-accent-light); }
         }
         @media (min-width: 768px) {
-            .carousel-dots {
-                display: none;
-            }
+            .carousel-dots { display: none; }
         }
 
-    </style>
+            </style>
     
     
     <script>
@@ -1272,8 +1261,7 @@
             </div>
             
             
-            <div class="services-carousel" id="mainServicesCarousel">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 carousel-track">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 services-grid" id="mainServicesGrid">
                 
                 <div class="service-card card-hover">
                     <div class="service-icon">
@@ -1491,8 +1479,7 @@
                 </div>
 
             </div>
-            </div>
-            
+
                 <div class="carousel-dots" id="mainServicesDots"></div>
                 <div class="mt-20">
                 <div class="max-w-3xl mx-auto text-center mb-12">
@@ -1504,8 +1491,7 @@
                     </p>
                 </div>
                 
-                <div class="services-carousel" id="additionalServicesCarousel">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 carousel-track">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 services-grid" id="additionalServicesGrid">
                     
                     <div class="service-card">
                         <div class="service-icon">
@@ -1572,8 +1558,6 @@
                         </p>
                     </div>                </div>
                 <div class="carousel-dots additional-carousel-dots" id="additionalServicesDots"></div>
-                
-                </div>
             </div>
             
             <div class="mt-20 text-center">
@@ -2283,169 +2267,90 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-// Mobile service carousels
+// Mobile service carousel (scroll-snap + dot sync)
 document.addEventListener('DOMContentLoaded', function() {
-    function initCarousel(containerId, dotsId, options) {
-        var container = document.getElementById(containerId);
+    function setupCarousel(gridId, dotsId, opts) {
+        var grid = document.getElementById(gridId);
         var dotsContainer = document.getElementById(dotsId);
-        if (!container) return;
-        
-        var track = container.querySelector('.carousel-track');
-        if (!track) return;
-        
-        var cards = track.querySelectorAll(':scope > .service-card');
-        if (cards.length < 2) return;
-        
-        var current = 0;
-        var isAnimating = false;
-        var startX, startY, isDragging = false;
-        
-        function goTo(index) {
-            if (isAnimating) return;
-            if (index < 0) index = 0;
-            if (index >= cards.length) index = 0; // loop back
-            if (index === current && index === 0) {
-                // Already at first, but if looping, just go
-            }
-            isAnimating = true;
-            current = index;
-            track.style.transform = 'translateX(-' + (current * 100) + '%)';
-            updateDots();
-            setTimeout(function() { isAnimating = false; }, 350);
-        }
-        
-        function next() {
-            goTo(current + 1);
-        }
-        
-        function updateDots() {
-            if (!dotsContainer) return;
-            var dots = dotsContainer.querySelectorAll('.dot');
-            for (var i = 0; i < dots.length; i++) {
-                dots[i].classList.toggle('active', i === current);
-            }
-        }
-        
+        if (!grid || !dotsContainer) return;
+
+        var cards = grid.querySelectorAll(':scope > .service-card');
+        if (cards.length < 2) { dotsContainer.style.display = 'none'; return; }
+
         // Create dots
-        if (dotsContainer) {
-            dotsContainer.innerHTML = '';
-            for (var i = 0; i < cards.length; i++) {
-                var dot = document.createElement('button');
-                dot.className = 'dot' + (i === 0 ? ' active' : '');
-                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-                dot.dataset.index = i;
-                dot.addEventListener('click', function() { goTo(parseInt(this.dataset.index)); });
-                dotsContainer.appendChild(dot);
+        dotsContainer.innerHTML = '';
+        var dots = [];
+        for (var i = 0; i < cards.length; i++) {
+            var dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+            dot.dataset.index = i;
+            (function(idx) {
+                dot.addEventListener('click', function() {
+                    cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                });
+            })(i);
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+        }
+
+        function updateDots() {
+            var containerWidth = grid.offsetWidth;
+            if (containerWidth === 0) return;
+            var scrollLeft = grid.scrollLeft;
+            var activeIdx = Math.round(scrollLeft / containerWidth);
+            if (activeIdx >= dots.length) activeIdx = dots.length - 1;
+            if (activeIdx < 0) activeIdx = 0;
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.toggle('active', i === activeIdx);
             }
         }
-        
-        // Next button
-        var nextBtns = container.querySelectorAll('.next-service-btn');
+
+        // Update dots on scroll
+        grid.addEventListener('scroll', function() {
+            requestAnimationFrame(updateDots);
+        });
+
+        // Next buttons
+        var nextBtns = grid.querySelectorAll('.next-service-btn');
         for (var i = 0; i < nextBtns.length; i++) {
             nextBtns[i].addEventListener('click', function(e) {
                 e.stopPropagation();
-                next();
+                var w = grid.offsetWidth;
+                if (w === 0) return;
+                var curIdx = Math.round(grid.scrollLeft / w);
+                var nextIdx = Math.min(curIdx + 1, cards.length - 1);
+                cards[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
             });
         }
-        
-        // Click on card to advance (main services only)
-        if (options && options.cardClick) {
+
+        // Card click advances to next (main services only)
+        if (opts && opts.cardClick) {
             for (var i = 0; i < cards.length; i++) {
-                cards[i].addEventListener('click', function(e) {
-                    // Don't advance if clicking on a link or button inside the card
-                    if (e.target.closest('a') || e.target.closest('button')) return;
-                    next();
-                });
+                (function(card) {
+                    card.addEventListener('click', function(e) {
+                        if (e.target.closest('a') || e.target.closest('button')) return;
+                        var w = grid.offsetWidth;
+                        if (w === 0) return;
+                        var curIdx = Math.round(grid.scrollLeft / w);
+                        var nextIdx = (curIdx + 1) % cards.length;
+                        cards[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                    });
+                })(cards[i]);
             }
         }
-        
-        // Touch events for swipe
-        track.addEventListener('touchstart', function(e) {
-            if (isAnimating) return;
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isDragging = true;
-        }, { passive: true });
-        
-        track.addEventListener('touchmove', function(e) {
-            if (!isDragging || isAnimating) return;
-            var dx = e.touches[0].clientX - startX;
-            var dy = e.touches[0].clientY - startY;
-            // Only horizontal swipes
-            if (Math.abs(dx) > Math.abs(dy)) {
-                e.preventDefault();
-                var offset = (-current * 100) + (dx / track.offsetWidth) * 100;
-                track.style.transition = 'none';
-                track.style.transform = 'translateX(' + offset + '%)';
-            }
-        }, { passive: false });
-        
-        track.addEventListener('touchend', function(e) {
-            if (!isDragging) return;
-            isDragging = false;
-            track.style.transition = '';
-            var dx = e.changedTouches[0].clientX - startX;
-            var threshold = 50;
-            if (dx < -threshold) {
-                next();
-            } else if (dx > threshold) {
-                goTo(current - 1);
-            } else {
-                goTo(current);
-            }
-        }, { passive: true });
-        
-        // Mouse drag for desktop testing (optional)
-        var mouseDown = false;
-        track.addEventListener('mousedown', function(e) {
-            if (window.innerWidth >= 768) return;
-            mouseDown = true;
-            startX = e.clientX;
-            isDragging = true;
-        });
-        track.addEventListener('mousemove', function(e) {
-            if (!mouseDown || isAnimating) return;
-            if (window.innerWidth >= 768) return;
-            e.preventDefault();
-            var dx = e.clientX - startX;
-            var offset = (-current * 100) + (dx / track.offsetWidth) * 100;
-            track.style.transition = 'none';
-            track.style.transform = 'translateX(' + offset + '%)';
-        });
-        track.addEventListener('mouseup', function(e) {
-            if (!mouseDown) return;
-            mouseDown = false;
-            isDragging = false;
-            if (window.innerWidth >= 768) return;
-            track.style.transition = '';
-            var dx = e.clientX - startX;
-            if (dx < -50) {
-                next();
-            } else if (dx > 50) {
-                goTo(current - 1);
-            } else {
-                goTo(current);
-            }
-        });
-        track.addEventListener('mouseleave', function() {
-            if (mouseDown) {
-                mouseDown = false;
-                isDragging = false;
-                track.style.transition = '';
-                goTo(current);
-            }
-        });
-        
-        // Public API
-        return { next: next, goTo: goTo, current: function() { return current; } };
+
+        // Handle resize
+        window.addEventListener('resize', updateDots);
     }
-    
-    // Init main services carousel (with card click advancement)
-    initCarousel('mainServicesCarousel', 'mainServicesDots', { cardClick: true });
-    
-    // Init additional services carousel (no card click advancement)
-    initCarousel('additionalServicesCarousel', 'additionalServicesDots', { cardClick: false });
+
+    // Init main services (with card click)
+    setupCarousel('mainServicesGrid', 'mainServicesDots', { cardClick: true });
+
+    // Init additional services (no card click)
+    setupCarousel('additionalServicesGrid', 'additionalServicesDots', { cardClick: false });
 });
 </script>
+
 </body>
 </html>
